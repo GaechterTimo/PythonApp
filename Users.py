@@ -19,7 +19,9 @@ class Database:
         )''')
 
     def insert_user(self, user):
-        self.cursor.execute('''INSERT INTO users (name, email) VALUES (?, ?)''', (user.name, user.email))
+        self.cursor.execute('''INSERT INTO users (name, email) 
+            VALUES (?, ?)''',
+            (user.name, user.email))
         self.connection.commit()
 
     def get_all_users(self):
