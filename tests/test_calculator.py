@@ -1,34 +1,8 @@
-"""
-Unit tests for the Calculator and Database classes.
-"""
+# In your test script (e.g., test_calculator.py)
 
+# Import the necessary modules
 import unittest
 from calculator import Database, Calculator
-
-class TestDatabase(unittest.TestCase):
-    """
-    Test cases for the Database class.
-    """
-
-    def setUp(self):
-        """
-        Set up a temporary in-memory database for testing.
-        """
-        self.database = Database(':memory:')
-
-    def test_create_results_table(self):
-        """
-        Test the create_results_table method.
-        """
-        self.database.create_results_table()
-        # Add assertions to test the behavior
-
-    def test_get_all_results(self):
-        """
-        Test the get_all_results method.
-        """
-        self.database.create_results_table()
-        # Add test data and assertions
 
 class TestCalculator(unittest.TestCase):
     """
@@ -49,7 +23,29 @@ class TestCalculator(unittest.TestCase):
         self.calculator.add(2)
         self.assertEqual(self.calculator.get_result(), 2)
 
-    # Add more test methods for the Calculator class
+    def test_subtract(self):
+        """
+        Test the subtract method of the Calculator class.
+        """
+        self.calculator.add(5)  # Start with a value of 5
+        self.calculator.subtract(2)
+        self.assertEqual(self.calculator.get_result(), 3)
+
+    def test_multiply(self):
+        """
+        Test the multiply method of the Calculator class.
+        """
+        self.calculator.add(3)  # Start with a value of 3
+        self.calculator.multiply(4)
+        self.assertEqual(self.calculator.get_result(), 12)
+
+    def test_divide(self):
+        """
+        Test the divide method of the Calculator class.
+        """
+        self.calculator.add(10)  # Start with a value of 10
+        self.calculator.divide(2)
+        self.assertEqual(self.calculator.get_result(), 5)
 
 if __name__ == '__main__':
     unittest.main()
