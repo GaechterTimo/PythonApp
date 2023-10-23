@@ -61,7 +61,9 @@ class Calculator:
 
     def save_result(self) -> None:
         """Saves the current value to the database."""
-        self.database.cursor.execute('INSERT INTO results (value) VALUES (?)', (self.current_value,))
+        self.database.cursor.execute(
+            'INSERT INTO results (value) VALUES (?)', (self.current_value,)
+        )
         self.database.connection.commit()
 
 def main():
