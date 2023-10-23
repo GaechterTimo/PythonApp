@@ -22,7 +22,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run Locust
-        run: locust --locustfile locustfile.py
+        run: locust --locustfile locust/locustfile.py  # Adjust the path to your Locust test script
 
       - name: Upload test results
         uses: actions/upload-artifact@v2
