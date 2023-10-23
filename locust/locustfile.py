@@ -15,6 +15,8 @@ class MyUser(HttpUser):
 
     def on_start(self):
         # Actions to perform when a user starts a test
+        pass  # Replace with your code
 
     def on_stop(self):
         # Actions to perform when a user stops a test
+        pass  # Replace with your code
