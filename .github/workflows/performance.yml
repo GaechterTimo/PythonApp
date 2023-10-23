@@ -1,31 +1,18 @@
-name: Performance Tests
+name: Locust Performance Tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  performance:
+  locust:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
+      - name: Install Locust
+        run: pip install locust
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run Locust
-        run: locust --locustfile locust/locustfile.py  # Adjust the path to your Locust test script
-
-      - name: Upload test results
-        uses: actions/upload-artifact@v2
-        with:
-          name: locust-results
-          path: /mnt/data/locust.log
+      - name: Run Locust Tests
+        run: locust --host http://localhost:8080
