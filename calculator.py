@@ -1,5 +1,6 @@
 """
-This is a simple calculator demo application that has external dependencies and interacts with a database.
+This is a simple calculator demo application that has 
+external dependencies and interacts with a database.
 """
 
 from typing import List
@@ -8,7 +9,8 @@ import sqlite3
 
 
 class Calculator:
-    """A calculator that can perform basic arithmetic operations and save the results to a database."""
+    """A calculator that can perform basic 
+    arithmetic operations and save the results to a database."""
 
     def __init__(self, database: Database):
         self.database = database
@@ -63,7 +65,6 @@ class Database:
         for row in self.cursor.fetchall():
             results.append(row[1])
         return results
-
 
 def main():
     database = Database('results.sqlite3')
