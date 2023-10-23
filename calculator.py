@@ -67,7 +67,7 @@ class Calculator:
 
 
 def main():
-     """Calculates the sum of two numbers and saves the result to a database."""
+"""Calculates the sum of two numbers and saves the result to a database."""
     
     database = Database('results.sqlite3')
     database.create_results_table()
