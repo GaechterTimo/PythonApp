@@ -21,7 +21,9 @@ class TestCalculator(unittest.TestCase):
         Test the add method of the Calculator class.
         """
         self.calculator.add(2)
-        self.assertEqual(self.calculator.get_result(), 2)
+        result = self.calculator.get_result()
+        print(f"Addition Result: {result}")
+        self.assertEqual(result, 2)
 
     def test_subtract(self):
         """
@@ -29,7 +31,9 @@ class TestCalculator(unittest.TestCase):
         """
         self.calculator.add(5)  # Start with a value of 5
         self.calculator.subtract(2)
-        self.assertEqual(self.calculator.get_result(), 3)
+        result = self.calculator.get_result()
+        print(f"Subtraction Result: {result}")
+        self.assertEqual(result, 3)
 
     def test_multiply(self):
         """
@@ -37,7 +41,9 @@ class TestCalculator(unittest.TestCase):
         """
         self.calculator.add(3)  # Start with a value of 3
         self.calculator.multiply(4)
-        self.assertEqual(self.calculator.get_result(), 12)
+        result = self.calculator.get_result()
+        print(f"Multiplication Result: {result}")
+        self.assertEqual(result, 12)
 
     def test_divide(self):
         """
@@ -45,7 +51,9 @@ class TestCalculator(unittest.TestCase):
         """
         self.calculator.add(10)  # Start with a value of 10
         self.calculator.divide(2)
-        self.assertEqual(self.calculator.get_result(), 5)
+        result = self.calculator.get_result()
+        print(f"Division Result: {result}")
+        self.assertEqual(result, 5)
 
 if __name__ == '__main__':
     unittest.main()
