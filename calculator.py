@@ -1,5 +1,5 @@
 """
-This is a simple calculator demo application that has 
+This is a simple calculator demo application that has
 external dependencies and interacts with a database.
 """
 
@@ -30,7 +30,7 @@ class Database:
         return results
 
 class Calculator:
-    """A calculator that can perform basic 
+    """A calculator that can perform basic
     arithmetic operations and save the results to a database."""
 
     def __init__(self, database: Database):
@@ -61,14 +61,12 @@ class Calculator:
 
     def save_result(self) -> None:
         """Saves the current value to the database."""
-        self.database.execute('INSERT INTO results (value) VALUES (?)', (self.current_value,))
-        self.database.commit()
-
-
+        self.database.cursor.execute('INSERT INTO results (value) VALUES (?)', (self.current_value,))
+        self.database.connection.commit()
 
 def main():
-"""Calculates the sum of two numbers and saves the result to a database."""
-    
+    """Calculates the sum of two numbers and saves the result to a database."""
+
     database = Database('results.sqlite3')
     database.create_results_table()
 
@@ -93,4 +91,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
