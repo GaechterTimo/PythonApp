@@ -1,3 +1,7 @@
+"""
+Unit tests for the Calculator and Database classes.
+"""
+
 import unittest
 from calculator import Database, Calculator
 
