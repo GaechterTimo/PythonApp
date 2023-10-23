@@ -7,6 +7,27 @@ from typing import List
 
 import sqlite3
 
+class Database:
+    """A database that stores the results of calculations."""
+
+    def __init__(self, filename: str):
+        self.connection = sqlite3.connect(filename)
+        self.cursor = self.connection.cursor()
+
+    def create_results_table(self) -> None:
+        """Creates the results table if it doesn't exist."""
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS results (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            value REAL
+        )''')
+
+    def get_all_results(self) -> List[float]:
+        """Returns a list of all the results in the database."""
+        self.cursor.execute('SELECT * FROM results')
+        results = []
+        for row in self.cursor.fetchall():
+            results.append(row[1])
+        return results
 
 class Calculator:
     """A calculator that can perform basic 
@@ -44,27 +65,6 @@ class Calculator:
         self.database.commit()
 
 
-class Database:
-    """A database that stores the results of calculations."""
-
-    def __init__(self, filename: str):
-        self.connection = sqlite3.connect(filename)
-        self.cursor = self.connection.cursor()
-
-    def create_results_table(self) -> None:
-        """Creates the results table if it doesn't exist."""
-        self.cursor.execute('''CREATE TABLE IF NOT EXISTS results (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            value REAL
-        )''')
-
-    def get_all_results(self) -> List[float]:
-        """Returns a list of all the results in the database."""
-        self.cursor.execute('SELECT * FROM results')
-        results = []
-        for row in self.cursor.fetchall():
-            results.append(row[1])
-        return results
 
 def main():
     database = Database('results.sqlite3')
